@@ -1,9 +1,5 @@
 const CVSamples = () => {
-  return (
-    <div>
-        CV Sample
-    </div>
-  )
-}
+  return <div>CV Sample</div>;
+};
 
-export default CVSamples
+export default CVSamples;

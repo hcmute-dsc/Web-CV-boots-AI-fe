@@ -1,9 +1,11 @@
 const CVGenerate = () => {
   return (
     <div>
-        Generate CV
+      <div>
+        <div className="text-black"> hello </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default CVGenerate
+export default CVGenerate;
