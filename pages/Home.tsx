@@ -1,9 +1,11 @@
+import CVBoosterCard from "../components/CVBoosterCard";
+
 const Home = () => {
   return (
     <div>
-        Home
+      <CVBoosterCard />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
