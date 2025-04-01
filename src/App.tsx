@@ -1,11 +1,11 @@
-import Nvbar from "../components/Nvbar";
+import Nvbar from "./components/Nvbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
-import Tips from "../pages/CVTips";
-import FAQ from "../pages/FAQ";
-import Generate from "../pages/CVGenerate";
-import Samples from "../pages/CVSamples";
-import Footer from "../components/Footer";
+import Home from "./pages/Home";
+import Tips from "./pages/CVTips";
+import FAQ from "./pages/FAQ";
+import Generate from "./pages/CVGenerate";
+import Samples from "./pages/CVSamples";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
