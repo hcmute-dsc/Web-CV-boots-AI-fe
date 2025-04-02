@@ -12,7 +12,7 @@ const App = () => {
       <Router>
         <Nvbar />
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/cvgenerate" element={<Generate />} />
           <Route path="/cvsamples" element={<Samples />} />
           <Route path="/cvtips" element={<Tips />} />
