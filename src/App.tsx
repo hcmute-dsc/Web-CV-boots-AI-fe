@@ -11,19 +11,14 @@ const App = () => {
   return (
     <div>
       <Router>
-        <div className="flex flex-col bg-white min-h-screen">
-          <Nvbar />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/home" element={<Home />} />
-              <Route path="/cvgenerate" element={<Generate />} />
-              <Route path="/cvsamples" element={<Samples />} />
-              <Route path="/cvtips" element={<Tips />} />
-              <Route path="/faq" element={<FAQ />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <Nvbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cvgenerate" element={<Generate />} />
+          <Route path="/cvsamples" element={<Samples />} />
+          <Route path="/cvtips" element={<Tips />} />
+          <Route path="/faq" element={<FAQ />} />
+        </Routes>
       </Router>
     </div>
   );
