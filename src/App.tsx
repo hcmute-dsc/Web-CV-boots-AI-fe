@@ -5,6 +5,7 @@ import Tips from "./pages/CVTips";
 import FAQ from "./pages/FAQ";
 import Generate from "./pages/CVGenerate";
 import Samples from "./pages/CVSamples";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
