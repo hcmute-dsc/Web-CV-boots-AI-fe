@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 import logo from "../assets/logo_dsc.png";
 
-
 const Nvbar = () => {
   return (
     <nav className="z-50">
@@ -19,7 +18,7 @@ const Nvbar = () => {
         </div>
         <div>
           <ul className="flex gap-8 mr-16 text-[18px] text-gray-400">
-            <Link to="/home">
+            <Link to="/">
               <li className="hover:text-blue-400 border-white cursor-pointer">
                 Trang chủ
               </li>
