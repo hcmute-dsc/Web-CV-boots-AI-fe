@@ -51,7 +51,10 @@ const CVBoosterCard: React.FC = () => {
               ))}
             </ul>
             {/* Nút CTA với gradient và hiệu ứng nổi bật */}
-            <button className="btn bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold flex items-center gap-2 hover:from-blue-600 hover:to-blue-800 hover:scale-105 transition-all duration-300 shadow-lg rounded-lg px-6 py-3">
+            <button
+              className="btn bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold flex items-center gap-2 hover:from-blue-600 hover:to-blue-800 hover:scale-105 transition-all duration-300 rounded-lg px-6 py-3 outline-none focus:outline-none"
+              onClick={() => (window.location.href = "/cvgenerate")}
+            >
               Bắt đầu ngay
               <FontAwesomeIcon icon={faRocket} className="fa-spin" />
             </button>

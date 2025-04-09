@@ -9,7 +9,6 @@ const CVSamples = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading delay
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
