@@ -1,3 +1,26 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+.skeleton {
+  background-color: #ffffff; /* Màu trắng */
+  background-image: linear-gradient(
+    90deg,
+    #f5f5f5 25%,
+    #ffffff 50%,
+    #f5f5f5 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+:root {
+  color-scheme: light;
+}
