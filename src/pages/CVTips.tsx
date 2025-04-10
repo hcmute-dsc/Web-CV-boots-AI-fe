@@ -30,19 +30,19 @@ const CVTips = () => {
             title="Tùy chỉnh CV cho từng vị trí ứng tuyển"
             iconBgColor="bg-blue-100"
           >
-            <p className="mb-4 text-sm md:text-base">
+            <p className="mb-4 text-sm md:text-base text-gray-700">
               Đừng sử dụng một CV cho tất cả các vị trí bạn ứng tuyển. Hãy điều
               chỉnh CV của bạn để phù hợp với từng vị trí cụ thể bằng cách:
             </p>
 
             <ul className="list-disc pl-6 mb-4 space-y-2 text-sm md:text-base">
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Tìm hiểu và sử dụng các từ khóa liên quan đến vị trí
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Nhấn mạnh những kỹ năng và kinh nghiệm phù hợp nhất
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Điều chỉnh phần mục tiêu nghề nghiệp cho phù hợp
               </li>
             </ul>
@@ -60,7 +60,7 @@ const CVTips = () => {
             title="Sử dụng số liệu và thành tựu cụ thể"
             iconBgColor="bg-indigo-100"
           >
-            <p className="mb-4 text-sm md:text-base">
+            <p className="mb-4 text-sm md:text-base text-gray-700">
               Thay vì chỉ liệt kê các nhiệm vụ, hãy nhấn mạnh thành tựu của bạn
               bằng số liệu và kết quả cụ thể:
             </p>
@@ -69,7 +69,7 @@ const CVTips = () => {
               badExample="Phụ trách các chiến dịch marketing qua email"
               goodExample="Tăng tỷ lệ mở email lên 45% và tăng doanh thu từ email marketing 30% trong 6 tháng"
             />
-            <p className="mb-4 text-sm md:text-base">
+            <p className="mb-4 text-sm md:text-base text-gray-700">
               Sử dụng các động từ mạnh mẽ ( như "đạt được","cải
               thiện","tăng","giảm") và kết hợp với các con số cụ thể sẽ làm nổi
               bật giá trị bạn mang lại cho công ty trước đây
@@ -81,21 +81,21 @@ const CVTips = () => {
             title="Sắp xếp thông tin hợp lý"
             iconBgColor="bg-purple-100"
           >
-            <p className="mb-4 text-sm md:text-base">
+            <p className="mb-4 text-sm md:text-base text-gray-700">
               Cách bạn sắp xếp thông tin trong CV rất quan trọng. Dưới đây là
               một số nguyên tắc cần đặc biệt chú ý:
             </p>
 
             <ul className="list-disc pl-6 mb-4 space-y-2 text-sm md:text-base">
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Đặt thông tin quan trọng nhất lên đầu – nhà tuyển dụng thường
                 chỉ chú ý đến các phần đầu tiên của CV
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Sử dụng cách trình bày theo thứ tự thời gian ngược (bắt đầu từ
                 kinh nghiệm gần nhất)
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Đảm bảo bố cục rõ ràng, dễ đọc với các phần (font chữ, cỡ chữ,
                 khoảng cách, v.v.)
               </li>
@@ -116,25 +116,25 @@ const CVTips = () => {
             title="Tập trung vào tính dễ đọc"
             iconBgColor="bg-green-100"
           >
-            <p className="mb-4 text-sm md:text-base">
+            <p className="mb-4 text-sm md:text-base text-gray-700">
               CV của bạn phải dễ đọc và dễ quét. Điều này có nghĩa là:
             </p>
 
             <ul className="list-disc pl-6 mb-4 space-y-2 text-sm md:text-base">
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Sử dụng font chữ đơn giản, chuyên nghiệp (Arial, Calibri, Times
                 New Roman)
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Sử dụng cỡ chữ từ 10-12pt cho nội dung chính
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Sử dụng khoảng trắng để làm CV trở nên gọn gàng
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Sử dụng bullet points thay vì đoạn văn dài
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Giữ CV trong khoảng 1-2 trang (trừ khi bạn ở vị trí cấp cao hoặc
                 lĩnh vực học thuật)
               </li>
@@ -154,22 +154,22 @@ const CVTips = () => {
             title="Kiểm tra kỹ lưỡng"
             iconBgColor="bg-red-100"
           >
-            <p className="mb-4 text-sm md:text-base">
+            <p className="mb-4 text-sm md:text-base text-gray-700">
               Lỗi chính tả và ngữ pháp có thể khiến bạn bị loại ngay lập tức.
               Hãy đảm bảo CV của bạn không có lỗi:
             </p>
 
             <ul className="list-disc pl-6 mb-4 space-y-2 text-sm md:text-base">
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Kiểm tra chính tả và ngữ pháp nhiều lần
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Nhờ người khác đọc lại CV của bạn
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Đọc CV phát hiện các lỗi khó nhận biết
               </li>
-              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-primary will-change-transform">
+              <li className="transition-transform duration-200 hover:translate-x-1 hover:text-blue-700 will-change-transform text-gray-700">
                 Kiểm tra tính chính xác trong định dạng (khoảng cách, font chữ)
               </li>
             </ul>

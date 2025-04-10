@@ -28,7 +28,7 @@ const TipCard: React.FC<TipCardProps> = ({
             {title}
           </h3>
         </div>
-        <div className="md:ml-12">{children}</div>
+        <div className="md:ml-12 text-gray-700">{children}</div>
       </div>
     </div>
   );
