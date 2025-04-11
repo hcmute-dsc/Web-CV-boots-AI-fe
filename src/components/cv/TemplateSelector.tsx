@@ -18,7 +18,7 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
 }) => {
   // Dữ liệu mẫu được sử dụng chỉ cho việc xem trước
   const previewData: CVFormData = defaultCVData;
-  
+
   // Hàm render mẫu thu nhỏ của template
   const renderTemplatePreview = (templateId: TemplateType) => {
     switch (templateId) {
@@ -34,25 +34,32 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       {templateList.map((template) => (
         <div
           key={template.id}
-          className={`cursor-pointer rounded-lg overflow-hidden border-2 transition-all duration-300 hover:shadow-xl ${
+          className={`group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl ${
             selectedTemplate === template.id
-              ? "border-blue-500 shadow-lg"
-              : "border-gray-200"
+              ? "border-4 border-pink-500 shadow-lg scale-[1.02]"
+              : "border border-gray-200"
           }`}
           onClick={() => onSelectTemplate(template.id)}
         >
-          <div className="h-48 bg-gray-50 p-2 flex items-center justify-center">
-            <div className="w-full h-full overflow-hidden relative transform scale-50">
+          {/* Khung preview CV */}
+          <div className="h-52 bg-gradient-to-br from-blue-50 to-pink-50 p-3 flex items-center justify-center">
+            <div className="w-full h-full overflow-hidden relative transform scale-[0.5]">
               {renderTemplatePreview(template.id)}
             </div>
           </div>
-          <div className="p-3 bg-white text-center">
-            <h3 className="font-medium">{template.name}</h3>
-            <p className="text-sm text-gray-500">{template.description}</p>
+
+          {/* Thông tin bên dưới */}
+          <div className="p-4 bg-white text-center">
+            <h3 className="font-semibold text-lg text-gray-800 group-hover:text-pink-600 transition">
+              {template.name}
+            </h3>
+            <p className="text-sm text-gray-500 mt-1 whitespace-nowrap overflow-hidden text-ellipsis">
+              {template.description}
+            </p>
           </div>
         </div>
       ))}
@@ -60,4 +67,4 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
   );
 };
 
-export default TemplateSelector; 
+export default TemplateSelector;
