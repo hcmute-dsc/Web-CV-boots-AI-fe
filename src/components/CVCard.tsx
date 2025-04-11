@@ -54,6 +54,7 @@ const CVCard = ({ title, description, image, template }: CVCardProps) => {
               className="relative bg-pink-600 text-white px-5 py-2 rounded-lg text-sm font-semibold shadow-md hover:shadow-purple-500/50 hover:bg-purple-700 transition duration-300 overflow-hidden hover:scale-105 flex items-center gap-2"
               onClick={(e) => {
                 e.stopPropagation();
+                window.location.href = "/cvgenerate";
                 handleGenerateCV();
               }}
             >
