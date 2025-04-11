@@ -15,7 +15,11 @@ interface CVFormProps {
 }
 
 const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
-  const handleChange = (section: keyof CVFormData, field: string, value: string) => {
+  const handleChange = (
+    section: keyof CVFormData,
+    field: string,
+    value: string
+  ) => {
     setFormData({
       ...formData,
       [section]: {
@@ -49,7 +53,11 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
     });
   };
 
-  const handleExperienceChange = (index: number, field: string, value: string) => {
+  const handleExperienceChange = (
+    index: number,
+    field: string,
+    value: string
+  ) => {
     const updatedExperiences = [...formData.experiences];
     updatedExperiences[index] = {
       ...updatedExperiences[index],
@@ -86,7 +94,11 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
     });
   };
 
-  const handleEducationChange = (index: number, field: string, value: string) => {
+  const handleEducationChange = (
+    index: number,
+    field: string,
+    value: string
+  ) => {
     const updatedEducations = [...formData.education];
     updatedEducations[index] = {
       ...updatedEducations[index],
@@ -165,7 +177,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   ? "bg-white shadow text-blue-600"
                   : "text-gray-600 hover:bg-white/[0.4] hover:text-blue-500"
               }
-            `}
+            `
+            }
           >
             <div className="flex items-center justify-center gap-2">
               <FontAwesomeIcon icon={faUser} />
@@ -180,7 +193,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   ? "bg-white shadow text-blue-600"
                   : "text-gray-600 hover:bg-white/[0.4] hover:text-blue-500"
               }
-            `}
+            `
+            }
           >
             <div className="flex items-center justify-center gap-2">
               <FontAwesomeIcon icon={faBookOpen} />
@@ -195,7 +209,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   ? "bg-white shadow text-blue-600"
                   : "text-gray-600 hover:bg-white/[0.4] hover:text-blue-500"
               }
-            `}
+            `
+            }
           >
             <div className="flex items-center justify-center gap-2">
               <FontAwesomeIcon icon={faBriefcase} />
@@ -210,7 +225,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   ? "bg-white shadow text-blue-600"
                   : "text-gray-600 hover:bg-white/[0.4] hover:text-blue-500"
               }
-            `}
+            `
+            }
           >
             <div className="flex items-center justify-center gap-2">
               <FontAwesomeIcon icon={faCode} />
@@ -224,12 +240,14 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
             <div className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-black mb-1">
                     Họ và tên
                   </label>
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+ text-black
+"
                     value={formData.personalInfo.name}
                     onChange={(e) =>
                       handleChange("personalInfo", "name", e.target.value)
@@ -242,7 +260,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                     value={formData.personalInfo.title}
                     onChange={(e) =>
                       handleChange("personalInfo", "title", e.target.value)
@@ -256,7 +275,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   Tóm tắt bản thân
                 </label>
                 <textarea
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                   rows={4}
                   value={formData.personalInfo.summary}
                   onChange={(e) =>
@@ -272,7 +292,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   </label>
                   <input
                     type="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                     value={formData.personalInfo.email}
                     onChange={(e) =>
                       handleChange("personalInfo", "email", e.target.value)
@@ -285,7 +306,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   </label>
                   <input
                     type="tel"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                     value={formData.personalInfo.phone}
                     onChange={(e) =>
                       handleChange("personalInfo", "phone", e.target.value)
@@ -301,7 +323,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   </label>
                   <input
                     type="text"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                     value={formData.personalInfo.location}
                     onChange={(e) =>
                       handleChange("personalInfo", "location", e.target.value)
@@ -314,7 +337,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   </label>
                   <input
                     type="url"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                     value={formData.personalInfo.website}
                     onChange={(e) =>
                       handleChange("personalInfo", "website", e.target.value)
@@ -347,7 +371,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                         value={edu.degree}
                         onChange={(e) =>
                           handleEducationChange(index, "degree", e.target.value)
@@ -360,7 +385,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                         value={edu.school}
                         onChange={(e) =>
                           handleEducationChange(index, "school", e.target.value)
@@ -374,7 +400,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                     </label>
                     <input
                       type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                       placeholder="VD: 2018-2022"
                       value={edu.period}
                       onChange={(e) =>
@@ -416,7 +443,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                         value={exp.position}
                         onChange={(e) =>
                           handleExperienceChange(
@@ -433,7 +461,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                         value={exp.company}
                         onChange={(e) =>
                           handleExperienceChange(
@@ -451,7 +480,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                     </label>
                     <input
                       type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                       placeholder="VD: 2020 - Hiện tại"
                       value={exp.period}
                       onChange={(e) =>
@@ -464,7 +494,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                       Mô tả công việc
                     </label>
                     <textarea
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                       rows={3}
                       placeholder="Mô tả công việc và thành tựu của bạn"
                       value={exp.description}
@@ -498,7 +529,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                   <div key={index} className="flex items-center mb-2">
                     <input
                       type="text"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                       value={skill}
                       onChange={(e) => handleSkillChange(index, e.target.value)}
                     />
@@ -540,7 +572,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                       </label>
                       <input
                         type="text"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                         value={project.name}
                         onChange={(e) =>
                           handleProjectChange(index, "name", e.target.value)
@@ -552,7 +585,8 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                         Mô tả dự án
                       </label>
                       <textarea
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
+"
                         rows={3}
                         value={project.description}
                         onChange={(e) =>
@@ -582,4 +616,4 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
   );
 };
 
-export default CVForm; 
+export default CVForm;

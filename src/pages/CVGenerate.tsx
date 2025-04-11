@@ -11,13 +11,19 @@ import CVForm from "../components/cv/CVForm";
 import CVPreview from "../components/cv/CVPreview";
 
 import { CVFormData, TemplateType } from "../components/value/cvTypes";
-import { defaultCVData, templateList, sampleCVData } from "../components/value/defaultData";
+import {
+  defaultCVData,
+  templateList,
+  sampleCVData,
+} from "../components/value/defaultData";
 
 const CVGenerate = () => {
   const [step, setStep] = useState(1);
-  const [selectedTemplate, setSelectedTemplate] = useState<TemplateType | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<TemplateType | null>(
+    null
+  );
   const [formData, setFormData] = useState<CVFormData>(defaultCVData);
-  
+
   // Hàm chuyển bước
   const goToNextStep = () => {
     setStep(step + 1);
@@ -26,7 +32,7 @@ const CVGenerate = () => {
   const goToPreviousStep = () => {
     setStep(step - 1);
   };
-  
+
   // Hàm áp dụng dữ liệu mẫu
   const applyExampleData = () => {
     setFormData(sampleCVData);
@@ -38,7 +44,7 @@ const CVGenerate = () => {
       case 1:
         return (
           <div className="py-8">
-            <h2 className="text-2xl font-bold text-center mb-8 text-blue-800">
+            <h2 className="text-2xl font-bold text-center mb-8 text-blue-800 ">
               Chọn mẫu CV phù hợp
             </h2>
             <TemplateSelector
@@ -159,4 +165,4 @@ const CVGenerate = () => {
   );
 };
 
-export default CVGenerate; 
+export default CVGenerate;

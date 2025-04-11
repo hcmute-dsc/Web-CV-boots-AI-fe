@@ -22,7 +22,7 @@ const CVSamples = () => {
       description:
         " Modern design, stands out with bright colors and smart layout.",
       image:
-        "https://i.pinimg.com/736x/ec/7c/cb/ec7ccb7ceda37219815a3a07ee67a76f.jpg",
+        "https://static.vecteezy.com/system/resources/previews/002/457/612/non_2x/marketing-cute-stickers-template-set-vector.jpg",
       template: <ModernCVTemplate />,
     },
     {
@@ -38,7 +38,7 @@ const CVSamples = () => {
       description:
         "Creative, unique design with bold colors and flexible layout.",
       image:
-        "https://i.pinimg.com/736x/42/b7/e3/42b7e3e204ad93f3e39e7bd37b0bfb1f.jpg",
+        "https://www.mba-madrid.com/wp-content/uploads/2022/08/Business-Intelligence.png",
       template: <CreativeCVTemplate />,
     },
   ];

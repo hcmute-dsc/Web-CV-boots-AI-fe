@@ -9,9 +9,10 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div>
-      <Router>
-        <Nvbar />
+    <Router>
+      <Nvbar />
+      {/* Thêm padding top để không bị che */}
+      <main className="pt-14">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/cvgenerate" element={<Generate />} />
@@ -19,8 +20,9 @@ const App = () => {
           <Route path="/cvtips" element={<Tips />} />
           <Route path="/faq" element={<FAQ />} />
         </Routes>
-      </Router>
-    </div>
+        <Footer />
+      </main>
+    </Router>
   );
 };
 
