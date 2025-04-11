@@ -10,9 +10,7 @@ const Nvbar = () => {
           <img
             src={logo}
             alt="Company Logo"
-            width="60"
-            height="60"
-            className="object-contain"
+            className="h-10 w-auto object-contain"
           />
         </div>
 

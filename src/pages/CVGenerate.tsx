@@ -82,20 +82,22 @@ const CVGenerate = () => {
               <CVForm formData={formData} setFormData={setFormData} />
               <CVPreview template={selectedTemplate} formData={formData} />
             </div>
-            <div className="flex justify-between mt-8">
+            <div className="flex items-center justify-between flex-wrap gap-4 pt-6">
               <button
-                className="btn bg-gray-300 hover:bg-gray-400 text-gray-800 px-6 py-2 rounded-md"
+                className="bg-gradient-to-r from-gray-800 to-black text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transition duration-300 ease-in-out"
                 onClick={goToPreviousStep}
               >
                 Quay lại
               </button>
-              <div className="space-x-4">
-                <button className="btn bg-blue-200 hover:bg-blue-300 text-blue-800 px-6 py-2 rounded-md flex items-center">
-                  <FontAwesomeIcon icon={faEye} className="mr-2" />
+
+              <div className="flex items-center gap-4">
+                <button className="bg-gradient-to-r from-pink-400 to-pink-600 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300 ease-in-out flex items-center gap-2">
+                  <FontAwesomeIcon icon={faEye} />
                   <span>Xem trước</span>
                 </button>
-                <button className="btn bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded-md flex items-center">
-                  <FontAwesomeIcon icon={faDownload} className="mr-2" />
+
+                <button className="bg-gradient-to-r from-red-500 to-red-700 text-white px-6 py-2 rounded-lg font-semibold shadow-md hover:shadow-lg transform hover:scale-105 transition duration-300 ease-in-out flex items-center gap-2">
+                  <FontAwesomeIcon icon={faDownload} />
                   <span>Tải xuống PDF</span>
                 </button>
               </div>
