@@ -1,8 +1,9 @@
 import React from "react";
-import { TemplateInfo, TemplateType } from "../value/cvTypes";
+import { TemplateInfo, TemplateType, CVFormData } from "../value/cvTypes";
 import CreativeCVTemplate from "../value/CreativeCVTemplate";
 import MinimalistCVTemplate from "../value/MinimalistCVTemplate";
 import ModernCVTemplate from "../value/ModernCVTemplate";
+import { defaultCVData } from "../value/defaultData";
 
 interface TemplateSelectorProps {
   selectedTemplate: TemplateType | null;
@@ -15,15 +16,18 @@ const TemplateSelector: React.FC<TemplateSelectorProps> = ({
   onSelectTemplate,
   templateList,
 }) => {
+  // Dữ liệu mẫu được sử dụng chỉ cho việc xem trước
+  const previewData: CVFormData = defaultCVData;
+  
   // Hàm render mẫu thu nhỏ của template
   const renderTemplatePreview = (templateId: TemplateType) => {
     switch (templateId) {
       case TemplateType.MODERN:
-        return <ModernCVTemplate />;
+        return <ModernCVTemplate formData={previewData} />;
       case TemplateType.MINIMALIST:
-        return <MinimalistCVTemplate />;
+        return <MinimalistCVTemplate formData={previewData} />;
       case TemplateType.CREATIVE:
-        return <CreativeCVTemplate />;
+        return <CreativeCVTemplate formData={previewData} />;
       default:
         return null;
     }

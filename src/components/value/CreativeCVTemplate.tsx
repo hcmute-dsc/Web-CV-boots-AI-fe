@@ -1,163 +1,165 @@
+import React from "react";
+import { CVFormData } from "./cvTypes";
 
-const CreativeCVTemplate = () => {
+interface CreativeCVTemplateProps {
+  formData: CVFormData;
+}
+
+const CreativeCVTemplate: React.FC<CreativeCVTemplateProps> = ({ formData }) => {
+  // Lấy chữ cái đầu tên và họ để hiển thị hình đại diện
+  const getInitials = () => {
+    const { name } = formData.personalInfo;
+    if (!name) return "CV";
+    
+    const nameParts = name.split(" ");
+    if (nameParts.length === 1) return nameParts[0].charAt(0).toUpperCase();
+    
+    const firstInitial = nameParts[0].charAt(0);
+    const lastInitial = nameParts[nameParts.length - 1].charAt(0);
+    return (firstInitial + lastInitial).toUpperCase();
+  };
+
   return (
-    <div className="bg-gradient-to-br from-purple-50 to-blue-50 text-gray-800 p-8 rounded-lg">
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="md:w-2/5">
-          <div className="bg-gradient-to-br from-purple-500 to-blue-500 text-white p-8 rounded-lg shadow-lg mb-6">
-            <div className="flex justify-center mb-4">
-              <div className="avatar">
-                <div className="w-32 h-32 rounded-full ring ring-white ring-offset-2 bg-gradient-to-br from-blue-300 to-purple-300 flex items-center justify-center">
-                  <span className="text-5xl font-bold text-white">AL</span>
-                </div>
-              </div>
-            </div>
-            <h1 className="text-3xl font-bold text-center mb-1">ALEX LEE</h1>
-            <p className="text-center text-blue-100 mb-4">Creative Director & Motion Designer</p>
-            <div className="divider my-4 bg-white/20 h-0.5"></div>
-            <p className="text-sm leading-relaxed mb-4">
-              Passionate creative professional with a unique vision and approach to design. 
-              I blend storytelling with visual elements to create memorable brand experiences.
-            </p>
+    <div className="bg-white overflow-hidden">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-12">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-2">
+              {formData.personalInfo.name || "Tên của bạn"}
+            </h1>
+            <h2 className="text-xl md:text-2xl font-light opacity-90 mb-4">
+              {formData.personalInfo.title || "Chức danh của bạn"}
+            </h2>
+            {formData.personalInfo.summary && (
+              <p className="max-w-xl text-indigo-100 leading-relaxed">
+                {formData.personalInfo.summary}
+              </p>
+            )}
           </div>
-          
-          <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 className="font-bold text-xl mb-3 text-purple-600">CONTACT</h2>
-            <div className="space-y-2 mb-4">
-              <p><span className="font-medium">Email:</span> alex.lee@example.com</p>
-              <p><span className="font-medium">Phone:</span> (456) 789-0123</p>
-              <p><span className="font-medium">Website:</span> alexleedesign.com</p>
-              <p><span className="font-medium">Location:</span> Los Angeles, CA</p>
-            </div>
-            
-            <h2 className="font-bold text-xl mb-3 mt-6 text-purple-600">SKILLS</h2>
-            <div className="grid grid-cols-2 gap-2">
-              <div className="mt-2">
-                <p className="font-medium mb-1">After Effects</p>
-                <progress className="progress progress-secondary" value="95" max="100"></progress>
-              </div>
-              <div className="mt-2">
-                <p className="font-medium mb-1">Photoshop</p>
-                <progress className="progress progress-secondary" value="90" max="100"></progress>
-              </div>
-              <div className="mt-2">
-                <p className="font-medium mb-1">Illustrator</p>
-                <progress className="progress progress-secondary" value="85" max="100"></progress>
-              </div>
-              <div className="mt-2">
-                <p className="font-medium mb-1">Cinema 4D</p>
-                <progress className="progress progress-secondary" value="80" max="100"></progress>
-              </div>
-              <div className="mt-2">
-                <p className="font-medium mb-1">UI/UX Design</p>
-                <progress className="progress progress-secondary" value="75" max="100"></progress>
-              </div>
-              <div className="mt-2">
-                <p className="font-medium mb-1">Blender</p>
-                <progress className="progress progress-secondary" value="70" max="100"></progress>
-              </div>
+          <div className="mt-6 md:mt-0">
+            <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white text-4xl font-bold shadow-lg border-4 border-white/30">
+              {getInitials()}
             </div>
           </div>
         </div>
-        
-        <div className="md:w-3/5">
-          <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-            <h2 className="font-bold text-xl mb-3 text-purple-600">EXPERIENCE</h2>
-            <div className="mb-5">
-              <div className="flex justify-between items-center">
-                <h3 className="font-bold text-lg">Creative Director</h3>
-                <span className="badge badge-primary badge-outline">2020 - Present</span>
-              </div>
-              <p className="text-purple-500 mb-2">Pulse Creative Studios, Los Angeles</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Lead a team of 8 designers creating motion graphics for major brands</li>
-                <li>Developed brand identities for 12+ clients, increasing their market recognition</li>
-                <li>Created award-winning animations for streaming platform promotions</li>
-                <li>Oversee project timelines and client relationships</li>
-              </ul>
+      </div>
+      
+      {/* Contact Info */}
+      <div className="bg-indigo-900 text-white px-8 py-3">
+        <div className="flex flex-wrap gap-4 justify-center md:justify-start text-sm">
+          {formData.personalInfo.email && (
+            <div className="flex items-center">
+              <span className="mr-2">✉️</span>
+              <span>{formData.personalInfo.email}</span>
             </div>
-            
-            <div className="mb-5">
-              <div className="flex justify-between items-center">
-                <h3 className="font-bold text-lg">Senior Motion Designer</h3>
-                <span className="badge badge-primary badge-outline">2017 - 2020</span>
-              </div>
-              <p className="text-purple-500 mb-2">Digital Waves Agency, San Francisco</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Created motion graphics and animations for tech industry clients</li>
-                <li>Collaborated with marketing teams to develop visual storytelling strategies</li>
-                <li>Designed interactive elements for web and mobile applications</li>
-              </ul>
+          )}
+          {formData.personalInfo.phone && (
+            <div className="flex items-center">
+              <span className="mr-2">📱</span>
+              <span>{formData.personalInfo.phone}</span>
             </div>
-            
-            <div>
-              <div className="flex justify-between items-center">
-                <h3 className="font-bold text-lg">Graphic Designer</h3>
-                <span className="badge badge-primary badge-outline">2015 - 2017</span>
-              </div>
-              <p className="text-purple-500 mb-2">Creative Solutions Inc., Portland</p>
-              <ul className="list-disc pl-5 space-y-1">
-                <li>Designed marketing materials and brand assets for diverse clients</li>
-                <li>Created illustrations and graphics for print and digital media</li>
-                <li>Managed social media visual content for multiple accounts</li>
-              </ul>
+          )}
+          {formData.personalInfo.location && (
+            <div className="flex items-center">
+              <span className="mr-2">📍</span>
+              <span>{formData.personalInfo.location}</span>
             </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="font-bold text-xl mb-3 text-purple-600">EDUCATION</h2>
-              <div className="mb-4">
-                <p className="font-bold">MFA in Motion Graphics</p>
-                <p>California Institute of the Arts</p>
-                <p className="text-sm text-gray-500">2013 - 2015</p>
-              </div>
+          )}
+          {formData.personalInfo.website && (
+            <div className="flex items-center">
+              <span className="mr-2">🌐</span>
+              <span>{formData.personalInfo.website}</span>
+            </div>
+          )}
+        </div>
+      </div>
+      
+      {/* Main Content */}
+      <div className="px-8 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Left Column */}
+          <div className="md:col-span-2 space-y-8">
+            {/* Experience Section */}
+            {formData.experiences.length > 0 && (
               <div>
-                <p className="font-bold">BFA in Graphic Design</p>
-                <p>Rhode Island School of Design</p>
-                <p className="text-sm text-gray-500">2009 - 2013</p>
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-indigo-200">
+                  <span className="text-indigo-600">Kinh nghiệm</span> làm việc
+                </h2>
+                
+                <div className="space-y-6">
+                  {formData.experiences.map((exp, index) => (
+                    <div key={index} className="relative pl-8 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-[2px] before:bg-indigo-200">
+                      <div className="absolute left-0 top-1 w-3 h-3 rounded-full bg-indigo-600 -translate-x-[6px]"></div>
+                      <h3 className="text-xl font-bold text-gray-800">{exp.position}</h3>
+                      <div className="text-indigo-600 font-medium">{exp.company}</div>
+                      <div className="text-sm text-gray-500 mb-3">{exp.period}</div>
+                      {exp.description && <p className="text-gray-600">{exp.description}</p>}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
             
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h2 className="font-bold text-xl mb-3 text-purple-600">AWARDS</h2>
-              <div className="space-y-3">
-                <div>
-                  <p className="font-bold">Motion Design Award</p>
-                  <p className="text-sm">Best Commercial Animation, 2022</p>
-                </div>
-                <div>
-                  <p className="font-bold">Adobe Design Achievement</p>
-                  <p className="text-sm">Finalist, Motion Graphics, 2020</p>
-                </div>
-                <div>
-                  <p className="font-bold">Creative Annual Award</p>
-                  <p className="text-sm">Gold in Digital Design, 2019</p>
+            {/* Projects Section */}
+            {formData.projects.length > 0 && (
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-indigo-200">
+                  <span className="text-indigo-600">Dự án</span> nổi bật
+                </h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {formData.projects.map((project, index) => (
+                    <div key={index} className="bg-white rounded-lg shadow-md p-5 hover:shadow-lg transition-shadow border border-gray-100">
+                      <h3 className="text-lg font-bold text-gray-800 mb-2">{project.name}</h3>
+                      <p className="text-gray-600 text-sm">{project.description}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
+            )}
           </div>
           
-          <div className="bg-white p-6 rounded-lg shadow-md mt-6">
-            <h2 className="font-bold text-xl mb-3 text-purple-600">FEATURED PROJECTS</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg">
-                <h3 className="font-bold">Global Tech Brand Campaign</h3>
-                <p className="text-sm">Motion design for international product launch, viewed by 2M+ people</p>
+          {/* Right Column */}
+          <div className="space-y-8">
+            {/* Education Section */}
+            {formData.education.length > 0 && (
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-indigo-200">
+                  <span className="text-indigo-600">Học</span> vấn
+                </h2>
+                
+                <div className="space-y-4">
+                  {formData.education.map((edu, index) => (
+                    <div key={index} className="bg-indigo-50 rounded-lg p-4">
+                      <h3 className="font-bold text-gray-800">{edu.degree}</h3>
+                      <div className="text-indigo-600">{edu.school}</div>
+                      {edu.period && <div className="text-sm text-gray-500">{edu.period}</div>}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="p-4 bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg">
-                <h3 className="font-bold">Streaming Platform Rebrand</h3>
-                <p className="text-sm">Complete visual identity refresh for leading entertainment provider</p>
+            )}
+            
+            {/* Skills Section */}
+            {formData.skills.length > 0 && formData.skills[0] !== "" && (
+              <div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-4 pb-2 border-b-2 border-indigo-200">
+                  <span className="text-indigo-600">Kỹ</span> năng
+                </h2>
+                
+                <div className="flex flex-wrap gap-2">
+                  {formData.skills.map((skill, index) => (
+                    <span 
+                      key={index} 
+                      className="bg-indigo-100 text-indigo-800 rounded-full px-3 py-1 text-sm font-medium"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="p-4 bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg">
-                <h3 className="font-bold">Music Festival Visuals</h3>
-                <p className="text-sm">Stage graphics and animations for 3-day international event</p>
-              </div>
-              <div className="p-4 bg-gradient-to-br from-purple-100 to-blue-100 rounded-lg">
-                <h3 className="font-bold">Mobile App Introduction</h3>
-                <p className="text-sm">Explainer animation for fintech startup, increasing conversion by 35%</p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Tab } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,6 +8,9 @@ import {
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
 import { CVFormData } from "../value/cvTypes";
+import AIRecommendModal from "./AIRecommendModal";
+import { saveCVData, registerSaveNotification, unregisterSaveNotification } from "../value/defaultData";
+import SaveNotification from "./SaveNotification";
 
 interface CVFormProps {
   formData: CVFormData;
@@ -15,6 +18,42 @@ interface CVFormProps {
 }
 
 const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
+  const [showAIModal, setShowAIModal] = useState(false);
+  const [currentModalType, setCurrentModalType] = useState<"Project" | "Experience">("Project");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [showSaveNotification, setShowSaveNotification] = useState(false);
+  
+  // Đăng ký thông báo khi lưu
+  useEffect(() => {
+    // Callback được gọi khi dữ liệu được lưu
+    const handleSave = () => {
+      setShowSaveNotification(true);
+      setTimeout(() => setShowSaveNotification(false), 2000);
+    };
+    
+    registerSaveNotification(handleSave);
+    
+    // Hủy đăng ký khi component unmount
+    return () => {
+      unregisterSaveNotification();
+    };
+  }, []);
+  
+  // Tự động lưu dữ liệu khi formData thay đổi
+  useEffect(() => {
+    // Chỉ lưu khi có dữ liệu có ý nghĩa
+    if (
+      formData.personalInfo.name ||
+      formData.personalInfo.email ||
+      formData.skills.some(skill => skill.trim() !== "") ||
+      formData.education.some(edu => edu.school.trim() !== "" || edu.degree.trim() !== "") ||
+      formData.experiences.some(exp => exp.company.trim() !== "" || exp.position.trim() !== "") ||
+      formData.projects.some(proj => proj.name.trim() !== "" || proj.description.trim() !== "")
+    ) {
+      saveCVData(formData);
+    }
+  }, [formData]);
+
   const handleChange = (
     section: keyof CVFormData,
     field: string,
@@ -163,6 +202,20 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
       ...formData,
       projects: updatedProjects,
     });
+  };
+
+  const openAIModal = (type: "Project" | "Experience", index: number) => {
+    setCurrentModalType(type);
+    setCurrentIndex(index);
+    setShowAIModal(true);
+  };
+
+  const handleAIDescriptionSelect = (description: string) => {
+    if (currentModalType === "Project") {
+      handleProjectChange(currentIndex, "description", description);
+    } else {
+      handleExperienceChange(currentIndex, "description", description);
+    }
   };
 
   return (
@@ -493,20 +546,28 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Mô tả công việc
                     </label>
-                    <textarea
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
-"
-                      rows={3}
-                      placeholder="Mô tả công việc và thành tựu của bạn"
-                      value={exp.description}
-                      onChange={(e) =>
-                        handleExperienceChange(
-                          index,
-                          "description",
-                          e.target.value
-                        )
-                      }
-                    />
+                    <div className="relative">
+                      <textarea
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                        rows={3}
+                        placeholder="Mô tả công việc và thành tựu của bạn"
+                        value={exp.description}
+                        onChange={(e) =>
+                          handleExperienceChange(
+                            index,
+                            "description",
+                            e.target.value
+                          )
+                        }
+                      />
+                      <button
+                        type="button"
+                        className="mt-2 text-sm text-blue-600 hover:text-blue-800"
+                        onClick={() => openAIModal("Experience", index)}
+                      >
+                        Viết mô tả với AI
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -584,19 +645,27 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Mô tả dự án
                       </label>
-                      <textarea
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black
-"
-                        rows={3}
-                        value={project.description}
-                        onChange={(e) =>
-                          handleProjectChange(
-                            index,
-                            "description",
-                            e.target.value
-                          )
-                        }
-                      />
+                      <div className="relative">
+                        <textarea
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                          rows={3}
+                          value={project.description}
+                          onChange={(e) =>
+                            handleProjectChange(
+                              index,
+                              "description",
+                              e.target.value
+                            )
+                          }
+                        />
+                        <button
+                          type="button"
+                          className="mt-2 text-sm text-blue-600 hover:text-blue-800"
+                          onClick={() => openAIModal("Project", index)}
+                        >
+                          Viết mô tả với AI
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -612,6 +681,15 @@ const CVForm: React.FC<CVFormProps> = ({ formData, setFormData }) => {
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
+
+      <AIRecommendModal
+        isOpen={showAIModal}
+        onClose={() => setShowAIModal(false)}
+        onSelect={handleAIDescriptionSelect}
+        type={currentModalType}
+      />
+      
+      <SaveNotification show={showSaveNotification} />
     </div>
   );
 };

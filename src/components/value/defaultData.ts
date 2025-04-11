@@ -110,4 +110,50 @@ export const templateList: TemplateInfo[] = [
     name: "Mẫu Sáng Tạo",
     description: "Phù hợp cho ngành thiết kế, nghệ thuật, marketing",
   },
-]; 
+];
+
+// Biến theo dõi trạng thái lưu
+let lastSaved = 0;
+let saveCallback: (() => void) | null = null;
+
+// Hàm lấy dữ liệu CV từ localStorage
+export const loadCVData = (): CVFormData => {
+  try {
+    const savedData = localStorage.getItem('cv_form_data');
+    if (savedData) {
+      return JSON.parse(savedData);
+    }
+  } catch (error) {
+    console.error("Lỗi khi đọc dữ liệu CV từ localStorage:", error);
+  }
+  return defaultCVData;
+};
+
+// Hàm lưu dữ liệu CV vào localStorage
+export const saveCVData = (data: CVFormData, onSave?: () => void): void => {
+  try {
+    localStorage.setItem('cv_form_data', JSON.stringify(data));
+    console.log("Đã lưu dữ liệu CV thành công");
+    
+    // Đảm bảo không gọi callback quá thường xuyên
+    const now = Date.now();
+    if (now - lastSaved > 1000) { // Giới hạn chỉ hiển thị thông báo mỗi giây
+      lastSaved = now;
+      if (onSave) onSave();
+      // Chạy callback đã đăng ký nếu có
+      if (saveCallback) saveCallback();
+    }
+  } catch (error) {
+    console.error("Lỗi khi lưu dữ liệu CV:", error);
+  }
+};
+
+// Đăng ký callback cho thông báo lưu
+export const registerSaveNotification = (callback: () => void): void => {
+  saveCallback = callback;
+};
+
+// Hủy đăng ký callback
+export const unregisterSaveNotification = (): void => {
+  saveCallback = null;
+}; 
